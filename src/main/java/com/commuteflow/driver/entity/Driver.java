@@ -15,7 +15,8 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "drivers")
 @Getter
@@ -46,6 +47,7 @@ public class Driver extends BaseEntity {
     private String licenseNumber;
 
     @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
     @Column(
         nullable = false,
         columnDefinition = "driver_status"

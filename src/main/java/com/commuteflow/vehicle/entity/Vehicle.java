@@ -13,6 +13,8 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @Entity
 @Table(name = "vehicles")
@@ -42,6 +44,7 @@ public class Vehicle extends BaseEntity {
     private Integer capacity;
 
     @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
     @Column(
         nullable = false,
         columnDefinition = "vehicle_status"
