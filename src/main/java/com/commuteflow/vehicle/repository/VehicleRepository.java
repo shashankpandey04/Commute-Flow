@@ -9,7 +9,12 @@ import java.util.UUID;
 
 public interface VehicleRepository extends JpaRepository<Vehicle, UUID> {
 
-    boolean existsByRegistrationNumber(String registrationNumber);
+    boolean existsByRegistrationNumberIgnoreCase(String registrationNumber);
 
-    List<Vehicle> findByStatus(VehicleStatus status);
+    List<Vehicle> findByOrganizationId(UUID organizationId);
+
+    List<Vehicle> findByOrganizationIdAndStatus(
+            UUID organizationId,
+            VehicleStatus status
+    );
 }
