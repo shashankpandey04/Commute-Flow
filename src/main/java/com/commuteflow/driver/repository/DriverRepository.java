@@ -9,7 +9,14 @@ import java.util.UUID;
 
 public interface DriverRepository extends JpaRepository<Driver, UUID> {
 
-    boolean existsByLicenseNumber(String licenseNumber);
+    boolean existsByLicenseNumberIgnoreCase(String licenseNumber);
 
-    List<Driver> findByStatus(DriverStatus status);
+    boolean existsByUserId(UUID userId);
+
+    List<Driver> findByOrganizationId(UUID organizationId);
+
+    List<Driver> findByOrganizationIdAndStatus(
+            UUID organizationId,
+            DriverStatus status
+    );
 }
